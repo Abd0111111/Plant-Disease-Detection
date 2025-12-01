@@ -8,7 +8,7 @@ import os
 
 TRAIN_DIR = os.path.join('data','splitted','train')
 VAL_DIR = os.path.join('data','splitted','val')
-OUT_MODEL = os.path.join('models','disease_model.h5')
+OUT_MODEL = os.path.join('models','model.h5')
 
 IMG_SIZE = (224,224)
 BATCH = 32
