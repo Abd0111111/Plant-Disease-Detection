@@ -1,7 +1,7 @@
 import os, random, shutil
 
-SRC = r"F:\PlantDiseaseProject\data\PlantVillage"
-DST = r"F:\PlantDiseaseProject\data\dataset_split"
+SRC = "data/images"
+DST = "data/dataset_split" 
 
 splits = ["train", "val", "test"]
 for s in splits:
@@ -28,4 +28,3 @@ for cls in os.listdir(SRC):
         os.makedirs(out, exist_ok=True)
         for f in arr:
             shutil.copy(os.path.join(cls_path, f), os.path.join(out, f))
-
