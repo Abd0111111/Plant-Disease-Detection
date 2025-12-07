@@ -1,5 +1,6 @@
 
 TREATMENTS = {
+    
     "Apple___Apple_scab": {
         "mild": "Remove infected leaves and improve airflow.",
         "moderate": "Apply fungicide like Captan or Mancozeb.",

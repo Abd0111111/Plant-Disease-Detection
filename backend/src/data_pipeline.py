@@ -3,6 +3,7 @@ import shutil
 from PIL import Image
 from sklearn.model_selection import train_test_split
 
+
 DATASET_DIR = os.path.join("..", "dataset", "plantvillage_dataset")
 OUTPUT_DIR = os.path.join("..", "dataset_splitted")
 

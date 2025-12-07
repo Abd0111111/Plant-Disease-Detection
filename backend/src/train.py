@@ -6,6 +6,7 @@ from tensorflow.keras.layers import GlobalAveragePooling2D, Dense, Dropout
 from tensorflow.keras.models import Model
 import os
 
+
 TRAIN_DIR = os.path.join('..', 'dataset', 'dataset_splitted', 'train')
 VAL_DIR = os.path.join('..', 'dataset', 'dataset_splitted', 'val')
 OUT_MODEL = os.path.join('..', 'models', 'model.h5')
