@@ -5,6 +5,7 @@ import tensorflow as tf
 import json
 import os
 
+
 from src.severity_detector import measure_severity
 from src.treatment import get_treatment
 
@@ -20,35 +21,27 @@ if not os.path.exists(MODEL_PATH):
 if not os.path.exists(CLASS_INDICES_PATH):
     raise FileNotFoundError("❌ class_indices.json missing in models/")
 
-
-
 model = tf.keras.models.load_model(MODEL_PATH)
-
 
 with open(CLASS_INDICES_PATH, "r") as f:
     class_indices = json.load(f)
 
 class_names = {v: k for k, v in class_indices.items()}
 
-
-
 def preprocess(img: Image.Image):
     img = img.resize((224, 224))
     img_array = np.array(img) / 255.0
     return img_array.reshape(1, 224, 224, 3)
 
-
 @app.post("/predict")
 async def predict(file: UploadFile):
-
     if not file:
         raise HTTPException(status_code=400, detail="No image uploaded")
-
+        
     try:
         img = Image.open(file.file).convert("RGB")
     except Exception:
         raise HTTPException(status_code=400, detail="Invalid image format")
-
 
     try:
         pred = model.predict(preprocess(img))
