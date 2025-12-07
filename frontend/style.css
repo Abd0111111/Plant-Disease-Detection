@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f5f0;
+    padding: 50px;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#result p, #previewContainer img {
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.mild {
+    color: green;
+    font-weight: bold;
+}
+.intermediate {
+    color: orange;
+    font-weight: bold;
+}
+.severe {
+    color: red;
+    font-weight: bold;
+}
