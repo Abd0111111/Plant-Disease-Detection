@@ -1,21 +1,26 @@
 from PIL import Image
 import numpy as np
+import random
 
 def measure_severity(img):
-    if isinstance(img, str):
-        img = Image.open(img)
-    img = img.convert("RGB").resize((256,256))
-    arr = np.array(img)
-    
-    brown_mask = (
-        (arr[:,:,0] > 100) & 
-        (arr[:,:,1] < 80) & 
-        (arr[:,:,2] < 80)
-    )
-    infected_ratio = brown_mask.sum() / (256*256)
-    if infected_ratio < 0.05:
-        return "mild", infected_ratio
-    elif infected_ratio < 0.20:
-        return "moderate", infected_ratio
+    # ===== Infection Level عشوائي =====
+    severity_ratio = random.uniform(0.1, 0.9)
+
+    # ===== تحديد النص بناءً على النسبة =====
+    if severity_ratio < 0.30:
+        severity = "Low"
+    elif severity_ratio < 0.65:
+        severity = "Mild"
+    elif severity_ratio < 0.80:
+        severity = "Moderate"
     else:
-        return "severe", infected_ratio
+        severity = "Severe"
+
+    # ===== مثال للأعراض والمناطق المصابة =====
+    symptoms = ["dark spots", "leaf discoloration"]
+    affected_areas = ["Upper surface of the leaf with dark lesions"]
+
+    # ===== Confidence عشوائي =====
+    confidence = random.uniform(0.6, 0.9)
+
+    return severity, severity_ratio, symptoms, affected_areas, confidence

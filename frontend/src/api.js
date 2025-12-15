@@ -1,4 +1,4 @@
-const BACKEND_URL = "https://YOUR_BACKEND_URL";
+const BACKEND_URL = "http://localhost:8000";
 
 export async function predictImage(file) {
   const formData = new FormData();

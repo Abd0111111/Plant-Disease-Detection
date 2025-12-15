@@ -11,10 +11,20 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const analyze = async () => {
+    if (!file) return;
     setLoading(true);
-    const res = await predictImage(file);
-    setResult(res);
-    setLoading(false);
+    const start = performance.now(); // بداية الوقت
+
+    try {
+      const res = await predictImage(file);
+      const end = performance.now(); // نهاية الوقت
+      setResult({ ...res, time: ((end - start) / 1000).toFixed(1) }); // حفظ الوقت بالثواني
+    } catch (err) {
+      console.error(err);
+      alert("Analysis failed");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
