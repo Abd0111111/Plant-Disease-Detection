@@ -1,19 +1,36 @@
+
 from fastapi import FastAPI, UploadFile, HTTPException
 import numpy as np
 from PIL import Image
 import tensorflow as tf
 import json
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 
-from src.severity_detector import measure_severity
-from src.treatment import get_treatment
+from severity_detector import measure_severity
+from treatment import get_treatment
+
 
 app = FastAPI()
+
+@app.get("/")
+def health_check():
+    return {
+        "status": "running",
+        "message": "Plant Disease Detection API is live"
+    }
 
 MODEL_PATH = "models/model.h5"
 CLASS_INDICES_PATH = "models/class_indices.json"
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError("❌ Model not found at models/model.h5")
