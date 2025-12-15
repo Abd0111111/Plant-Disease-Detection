@@ -20,8 +20,8 @@ def health_check():
     }
 
 # Paths
-MODEL_PATH = "../ml/models/model.h5"
-CLASS_INDICES_PATH = "../ml/models/class_indices.json"
+MODEL_PATH = "models/model.h5"
+CLASS_INDICES_PATH = "models/class_indices.json"
 
 # CORS
 app.add_middleware(
